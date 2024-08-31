@@ -1,4 +1,4 @@
-package com.example.revanth_2340_demo;
+package com.example.revanth_2340_demo.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.databinding.library.baseAdapters.BR;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.revanth_2340_demo.R;
+import com.example.revanth_2340_demo.databinding.ActivityMainBinding;
+import com.example.revanth_2340_demo.viewmodel.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        //utilize databinding here to inflate the layout
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        Log.d(TAG, "onCreate called");
+
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate method called");
@@ -28,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        //create viewmodel
+        MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+
+        //binding the viewmodel
+        binding.setVariable(BR.viewModel, viewModel);
+        binding.setLifecycleOwner(this);
 
         //fist find button by ID
         Button openButton = findViewById(R.id.myButton);
