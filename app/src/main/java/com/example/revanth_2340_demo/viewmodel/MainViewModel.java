@@ -32,7 +32,7 @@ public class MainViewModel extends ViewModel {
 
     //behavior methods
     public void updateMessage() {
-        greetingMessage.setValue("Hello from the MainViewModel");
+        greetingMessage.setValue("Hello from the MainViewModel!");
     }
 
     public void incrementCounter() {
