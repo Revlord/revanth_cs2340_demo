@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,54 +16,70 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- TextView for greeting message -->
         <TextView
-            android:id="@+id/some_text"
+            android:id="@+id/greetingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewModel.greetingMessage}"
-            app:layout_constraintBottom_toTopOf="@+id/updateButton"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.585" />
+            app:layout_constraintBottom_toTopOf="@+id/updateButton"
+            android:textSize="18sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"/>
 
+        <!-- Button for updating message -->
         <Button
             android:id="@+id/updateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Update Message"
             android:onClick="@{() -> viewModel.updateMessage()}"
-            app:layout_constraintTop_toBottomOf="@id/some_text"
+            app:layout_constraintTop_toBottomOf="@id/greetingText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
 
+        <!-- TextView for counter display -->
         <TextView
+            android:id="@+id/counterText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{String.valueOf(viewModel.counter)}"
             app:layout_constraintTop_toBottomOf="@id/updateButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.585" />
+            android:textSize="18sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"/>
 
+        <!-- Button for incrementing counter -->
         <Button
             android:id="@+id/incrementButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Increment counter"
+            android:text="Increment Counter"
             android:onClick="@{() -> viewModel.incrementCounter()}"
-            app:layout_constraintTop_toBottomOf="@id/updateButton"
+            app:layout_constraintTop_toBottomOf="@id/counterText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
 
+        <!-- Button for opening another activity -->
         <Button
             android:id="@+id/myButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_text"
+            android:text="Open Second Activity"
             app:layout_constraintTop_toBottomOf="@id/incrementButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
